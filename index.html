@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette</title>
+    <link rel="stylesheet" type="text/css" href="style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="style/main.css" />
+    <link rel="stylesheet" type="text/css" href="style/property.css" />
+</head>
+<body>
+    <main>
+        <!-- Игровое поле -->
+        <div class="gameField">
+            <div class="nameTable">
+                <p>Стол №1</p>
+            </div>
+            <!-- Таймер -->
+            <div class="timerAndLabel">
+                <div class="timer" id="timer">
+                    <p>0</p>
+                </div>
+            </div>
+            <!-- Карты -->
+            <ul class="cards">
+                <li class="card anim_cardGame1 none" id="cardGame1"></li>
+                <li class="card l1 anim_cardGame2 none" id="cardGame2"></li>
+                <li class="card l2 anim_cardGame3 none" id="cardGame3"></li>
+                <li class="card l3 anim_cardGame4 none" id="cardGame4"></li>
+                <li class="card l4 anim_cardGame5 none" id="cardGame5"></li>
+                <li class="card l5 anim_cardGame6 none" id="cardGame6"></li>
+                <!-- <li class="card l6 anim_cardGame7 none" id="cardGame7"></li>
+                <li class="card l7 anim_cardGame8 none" id="cardGame8"></li>
+                <li class="card l8 anim_cardGame9 none" id="cardGame9"></li> -->
+            </ul>
+            <!-- Сообщение -->
+            <div class="alertMessage none" id="alertMessage">
+                <p>Для начала игры сядьте за любое свободное место за столом, нажав кнопку Сесть за стол</p>
+            </div>
+            <!-- resultGame -->
+            <div class="alertResult alertResultGame none" id="alertResultGame">
+                <p>17</p>
+            </div>
+            <!-- Кнопки -->
+            <div class="buttons">
+                <button class="buttonBackTable button b-w2" id="buttonBackTable" onclick="unsetUserAllTable()" disabled>Покинуть стол</button>
+                <button class="buttonRemoveBids button b-w2" id="buttonRemoveBids" onclick="actionRemoveBids()" disabled>Убрать ставки</button>
+                <button class="buttonRepeatBids button b-w3" id="buttonRepeatBids" onclick="actionRepeatBids()" disabled>Повторить ставки</button>
+                <button class="buttonSetTable button b-w2" id="buttonSetTable" onclick="setTable()">Cесть за стол</button>
+                <button class="buttonOk button b-w1" id="buttonOk" disabled>Готов</button>
+            </div>
+            <!-- Поля игроков -->
+            <div class="map">
+                <div class="betweenHorizont_0-3 horizont h1-t h0-l" onclick="setChipBlock(this, 'betweenHorizont_0-3')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_3-6 horizont h1-t h1-l" onclick="setChipBlock(this, 'betweenHorizont_3-6')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_6-9 horizont h1-t h2-l" onclick="setChipBlock(this, 'betweenHorizont_6-9')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_9-12 horizont h1-t h3-l" onclick="setChipBlock(this, 'betweenHorizont_9-12')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_12-15 horizont h1-t h4-l" onclick="setChipBlock(this, 'betweenHorizont_12-15')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_15-18 horizont h1-t h5-l" onclick="setChipBlock(this, 'betweenHorizont_15-18')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_18-21 horizont h1-t h6-l" onclick="setChipBlock(this, 'betweenHorizont_18-21')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_21-24 horizont h1-t h7-l" onclick="setChipBlock(this, 'betweenHorizont_21-24')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_24-27 horizont h1-t h8-l" onclick="setChipBlock(this, 'betweenHorizont_24-27')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_27-30 horizont h1-t h9-l" onclick="setChipBlock(this, 'betweenHorizont_27-30')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_30-33 horizont h1-t h10-l" onclick="setChipBlock(this, 'betweenHorizont_30-33')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_33-36 horizont h1-t h11-l" onclick="setChipBlock(this, 'betweenHorizont_33-36')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+        
+                <div class="betweenHorizont_0-2 horizont h2-t h0-l" onclick="setChipBlock(this, 'betweenHorizont_0-2')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_2-5 horizont h2-t h1-l" onclick="setChipBlock(this, 'betweenHorizont_2-5')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_5-8 horizont h2-t h2-l" onclick="setChipBlock(this, 'betweenHorizont_5-8')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_8-11 horizont h2-t h3-l" onclick="setChipBlock(this, 'betweenHorizont_8-11')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_11-14 horizont h2-t h4-l" onclick="setChipBlock(this, 'betweenHorizont_11-14')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_14-17 horizont h2-t h5-l" onclick="setChipBlock(this, 'betweenHorizont_14-17')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_17-20 horizont h2-t h6-l" onclick="setChipBlock(this, 'betweenHorizont_17-20')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_20-23 horizont h2-t h7-l" onclick="setChipBlock(this, 'betweenHorizont_20-23')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_23-26 horizont h2-t h8-l" onclick="setChipBlock(this, 'betweenHorizont_23-26')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_26-29 horizont h2-t h9-l" onclick="setChipBlock(this, 'betweenHorizont_26-29')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_29-32 horizont h2-t h10-l" onclick="setChipBlock(this, 'betweenHorizont_29-32')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_32-35 horizont h2-t h11-l" onclick="setChipBlock(this, 'betweenHorizont_32-35')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="betweenHorizont_0-1 horizont h3-t h0-l" onclick="setChipBlock(this, 'betweenHorizont_0-1')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_1-4 horizont h3-t h1-l" onclick="setChipBlock(this, 'betweenHorizont_1-4')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_4-7 horizont h3-t h2-l" onclick="setChipBlock(this, 'betweenHorizont_4-7')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_7-10 horizont h3-t h3-l" onclick="setChipBlock(this, 'betweenHorizont_7-10')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_10-13 horizont h3-t h4-l" onclick="setChipBlock(this, 'betweenHorizont_10-13')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_13-16 horizont h3-t h5-l" onclick="setChipBlock(this, 'betweenHorizont_13-16')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_16-19 horizont h3-t h6-l" onclick="setChipBlock(this, 'betweenHorizont_16-19')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_19-22 horizont h3-t h7-l" onclick="setChipBlock(this, 'betweenHorizont_19-22')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_22-25 horizont h3-t h8-l" onclick="setChipBlock(this, 'betweenHorizont_22-25')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_25-28 horizont h3-t h9-l" onclick="setChipBlock(this, 'betweenHorizont_25-28')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_28-31 horizont h3-t h10-l" onclick="setChipBlock(this, 'betweenHorizont_28-31')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenHorizont_31-34 horizont h3-t h11-l" onclick="setChipBlock(this, 'betweenHorizont_31-34')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+        
+                <div class="betweenVertical_3-2 vertical v1-t v1-l" onclick="setChipBlock(this, 'betweenVertical_3-2')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_6-5 vertical v1-t v2-l" onclick="setChipBlock(this, 'betweenVertical_6-5')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_9-8 vertical v1-t v3-l" onclick="setChipBlock(this, 'betweenVertical_9-8')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_12-11 vertical v1-t v4-l" onclick="setChipBlock(this, 'betweenVertical_12-11')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_15-14 vertical v1-t v5-l" onclick="setChipBlock(this, 'betweenVertical_15-14')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_18-17 vertical v1-t v6-l" onclick="setChipBlock(this, 'betweenVertical_18-17')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_21-20 vertical v1-t v7-l" onclick="setChipBlock(this, 'betweenVertical_21-20')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_24-23 vertical v1-t v8-l" onclick="setChipBlock(this, 'betweenVertical_24-23')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_27-26 vertical v1-t v9-l" onclick="setChipBlock(this, 'betweenVertical_27-26')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_30-29 vertical v1-t v10-l" onclick="setChipBlock(this, 'betweenVertical_30-29')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_33-32 vertical v1-t v11-l" onclick="setChipBlock(this, 'betweenVertical_33-32')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_36-35 vertical v1-t v12-l" onclick="setChipBlock(this, 'betweenVertical_36-35')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="betweenVertical_2-1 vertical v2-t v1-l" onclick="setChipBlock(this, 'betweenVertical_2-1')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_5-4 vertical v2-t v2-l" onclick="setChipBlock(this, 'betweenVertical_5-4')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_8-7 vertical v2-t v3-l" onclick="setChipBlock(this, 'betweenVertical_8-7')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_11-10 vertical v2-t v4-l" onclick="setChipBlock(this, 'betweenVertical_11-10')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_14-13 vertical v2-t v5-l" onclick="setChipBlock(this, 'betweenVertical_14-13')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_17-16 vertical v2-t v6-l" onclick="setChipBlock(this, 'betweenVertical_17-16')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_20-19 vertical v2-t v7-l" onclick="setChipBlock(this, 'betweenVertical_20-19')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_23-22 vertical v2-t v8-l" onclick="setChipBlock(this, 'betweenVertical_23-22')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_26-25 vertical v2-t v9-l" onclick="setChipBlock(this, 'betweenVertical_26-25')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_29-28 vertical v2-t v10-l" onclick="setChipBlock(this, 'betweenVertical_29-28')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_32-31 vertical v2-t v11-l" onclick="setChipBlock(this, 'betweenVertical_32-31')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="betweenVertical_35-34 vertical v2-t v12-l" onclick="setChipBlock(this, 'betweenVertical_35-34')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+        
+                <div class="square_0-3-2 square h0-l v1-t" onclick="setChipBlock(this, 'square_0-3-2')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_3-6-2-5 square h1-l v1-t" onclick="setChipBlock(this, 'square_3-6-2-5')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_6-9-5-8 square h2-l v1-t" onclick="setChipBlock(this, 'square_6-9-5-8')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_9-12-8-11 square h3-l v1-t" onclick="setChipBlock(this, 'square_9-12-8-11')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_12-15-11-14 square h4-l v1-t" onclick="setChipBlock(this, 'square_12-15-11-14')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_15-18-14-17 square h5-l v1-t" onclick="setChipBlock(this, 'square_15-18-14-17')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_18-21-17-20 square h6-l v1-t" onclick="setChipBlock(this, 'square_18-21-17-20')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_21-24-20-23 square h7-l v1-t" onclick="setChipBlock(this, 'square_21-24-20-23')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_24-27-23-26 square h8-l v1-t" onclick="setChipBlock(this, 'square_24-27-23-26')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_27-30-26-29 square h9-l v1-t" onclick="setChipBlock(this, 'square_27-30-26-29')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_30-33-29-32 square h10-l v1-t" onclick="setChipBlock(this, 'square_30-33-29-32')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_33-36-32-35 square h11-l v1-t" onclick="setChipBlock(this, 'square_33-36-32-35')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+        
+                <div class="square_0-2-1 square h0-l v2-t" onclick="setChipBlock(this, 'square_0-2-1')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_2-5-1-4 square h1-l v2-t" onclick="setChipBlock(this, 'square_2-5-1-4')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_5-8-4-7 square h2-l v2-t" onclick="setChipBlock(this, 'square_5-8-4-7')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_8-11-7-10 square h3-l v2-t" onclick="setChipBlock(this, 'square_8-11-7-10')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_11-14-10-13 square h4-l v2-t" onclick="setChipBlock(this, 'square_11-14-10-13')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_14-17-13-16 square h5-l v2-t" onclick="setChipBlock(this, 'square_14-17-13-16')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_17-20-16-19 square h6-l v2-t" onclick="setChipBlock(this, 'square_17-20-16-19')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_20-23-19-22 square h7-l v2-t" onclick="setChipBlock(this, 'square_20-23-19-22')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_23-26-22-25 square h8-l v2-t" onclick="setChipBlock(this, 'square_23-26-22-25')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_26-29-25-28 square h9-l v2-t" onclick="setChipBlock(this, 'square_26-29-25-28')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_29-32-28-31 square h10-l v2-t" onclick="setChipBlock(this, 'square_29-32-28-31')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="square_32-35-31-34 square h11-l v2-t" onclick="setChipBlock(this, 'square_32-35-31-34')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                
+                <div class="map__block block_empty"></div>
+                <div class="map__block_row1 block_1Y12" onclick="setChipBlock(this, 'block_1Y12')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block_row1 block_2Y12" onclick="setChipBlock(this, 'block_2Y12')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block_row1 block_3Y12" onclick="setChipBlock(this, 'block_3Y12')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_numberTable"></div>
+        
+                <div class="map__block block_empty"></div>
+                <div class="map__block_row2 block_1-18" onclick="setChipBlock(this, 'block_1-18')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block_row2 block_Chet" onclick="setChipBlock(this, 'block_Chet')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block_row2 block_RedRomb" onclick="setChipBlock(this, 'block_RedRomb')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block_row2 block_BlackRomb" onclick="setChipBlock(this, 'block_BlackRomb')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block_row2 block_NeChet" onclick="setChipBlock(this, 'block_NeChet')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block_row2 block_19-36" onclick="setChipBlock(this, 'block_19-36')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_numberTable"></div>
+        
+                <div class="map__block block_0">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_3" onclick="setChipBlock(this, 'block_3')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_6" onclick="setChipBlock(this, 'block_6')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_9" onclick="setChipBlock(this, 'block_9')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_12" onclick="setChipBlock(this, 'block_12')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_15" onclick="setChipBlock(this, 'block_15')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_18" onclick="setChipBlock(this, 'block_18')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_21" onclick="setChipBlock(this, 'block_21')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_24" onclick="setChipBlock(this, 'block_24')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_27" onclick="setChipBlock(this, 'block_27')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_30" onclick="setChipBlock(this, 'block_30')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_33" onclick="setChipBlock(this, 'block_33')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_36" onclick="setChipBlock(this, 'block_36')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_2k1" onclick="setChipBlock(this, 'block_2k1')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+        
+                <div class="map__block block_0" onclick="setChipBlock(this, 'block_0')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_2" onclick="setChipBlock(this, 'block_2')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_5" onclick="setChipBlock(this, 'block_5')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_8" onclick="setChipBlock(this, 'block_8')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_11" onclick="setChipBlock(this, 'block_11')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_14" onclick="setChipBlock(this, 'block_14')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_17" onclick="setChipBlock(this, 'block_17')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_20" onclick="setChipBlock(this, 'block_20')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_23" onclick="setChipBlock(this, 'block_23')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_26" onclick="setChipBlock(this, 'block_26')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_29" onclick="setChipBlock(this, 'block_29')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_32" onclick="setChipBlock(this, 'block_32')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_35" onclick="setChipBlock(this, 'block_35')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_2k1" onclick="setChipBlock(this, 'block_2k1')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+        
+                <div class="map__block block_0" onclick="setChipBlock(this, 'block_0')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_1" onclick="setChipBlock(this, 'block_1')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_4" onclick="setChipBlock(this, 'block_4')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_7" onclick="setChipBlock(this, 'block_7')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_10" onclick="setChipBlock(this, 'block_10')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_13" onclick="setChipBlock(this, 'block_13')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_16" onclick="setChipBlock(this, 'block_16')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_19" onclick="setChipBlock(this, 'block_19')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_22" onclick="setChipBlock(this, 'block_22')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_25" onclick="setChipBlock(this, 'block_25')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_28" onclick="setChipBlock(this, 'block_28')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_31" onclick="setChipBlock(this, 'block_31')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_34" onclick="setChipBlock(this, 'block_34')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="map__block block_2k1" onclick="setChipBlock(this, 'block_2k1')">
+                    <div class="block_chip none">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Поле ставок -->
+        <div class="bettingField">
+            <!-- список кнопок меню -->
+            <ul class="buttonMenu">
+                <li class="menuResults" onclick="selectMenu('contanerTextarea')"></li>
+                <li class="menuSettings" onclick="selectMenu('soundSettings')"></li>
+                <li class="menuStatistics" onclick="selectMenu('statistickTextarea')"></li>
+            </ul>
+            <!--  -->
+            <div class="textareaBetting ">
+                <div class="" id="contanerTextarea">
+                    <textarea id="resultsTextarea" disabled></textarea>
+                    <div class="backgroundScroll"></div>
+                </div>
+                <div class="soundSettings none" id="soundSettings">
+                    <label for="settingsSound">Громкость звуков: </label>
+                    <input type="range" step="1" min="0" max="10" value="5" id="settingsSound" class="settingsSound"/>
+                    <div class="buttonMuteSound">
+                        <label for="muteSound">Выкл.</label> 
+                        <input type="checkbox" checked id="muteSound" class="muteSound"/> 
+                    </div>
+                    <label for="settingsMusic">Громкость музыки: </label>
+                    <input type="range" step="1" min="0" max="10" value="5" id="settingsMusic" class="settingsSound"/>
+                    <div class="buttonMuteSound">
+                        <label for="muteMusic">Выкл.</label> 
+                        <input type="checkbox" checked id="muteMusic" class="muteSound"/> 
+                    </div>
+                    <div class="buttonMuteSound">
+                        <label for="muteSound">Выключить подсказки:</label> 
+                        <input type="checkbox" checked id="muteHint" class="muteSound"/> 
+                    </div>
+                </div>
+                <div class="statistick none" id="statistickTextarea">
+                    <div>
+                        <div><p>Статистика стола: </p></div>
+                        <div><p>Выйграно за день: </p><p id="statistickDay">0</p></div>
+                        <div><p>Выйграно за неделю: </p><p id="statistickWeek">0</p></div>
+                        <div><p>Выйграно за месяц: </p><p id="statistickMonth">0</p></div>
+                    </div>
+                    <div>
+                        <div><p>Предыдущие очки дилера:</p></div>
+                        <div id="dealerpoints">
+                            <p>0</p>
+                            <p>0</p>
+                            <p>0</p>
+                            <p>0</p>
+                            <p>0</p>
+                            <p>0</p>
+                            <p>0</p>
+                            <p>0</p>
+                            <p>0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="resultsBetting">
+                <div class="bids">
+                    <p>Ставки</p>
+                    <p>25.00</p>
+                </div>
+                <div class="balans">
+                    <p>Баланс</p>
+                    <p>11000.00</p>
+                </div>
+            </div>
+            <!-- Фишки для ставок -->
+            <div class="chipsRadio">
+                <div class="collChip">
+                    <div class="chip chipBlue" onclick="setShadowButton(this, '1')">
+                        <p>0.2</p>
+                    </div>
+                </div>
+                <div class="collChip">
+                    <div class="chip chipGreen w" onclick="setShadowButton(this, '2')">
+                        <p>0.5</p>
+                    </div>
+                </div>
+                <div class="collChip">
+                    <div class="chip chipYellow" onclick="setShadowButton(this, '3')">
+                        <p>1</p>
+                    </div>
+                </div>
+                <div class="collChip">
+                    <div class="chip chipRed w" onclick="setShadowButton(this, '4')">
+                        <p>2</p>
+                    </div>
+                </div>
+                <div class="collChip">
+                    <div class="chip chipPink" onclick="setShadowButton(this, '5')">
+                        <p>5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- <script src="scripte/add_block.js"></script> -->
+    <script src="scripte/main.js"></script>
+    <script src="scripte/requests.js"></script>
+</body>
+</html>

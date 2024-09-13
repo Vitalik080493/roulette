@@ -1,0 +1,161 @@
+/* фишки */
+.chipBlue{background-image: url(../img/chip/SpriteBlue.svg);}
+.chipGreen{background-image: url(../img/chip/SpriteGreen.svg);}
+.chipYellow{background-image: url(../img/chip/SpriteYellow.svg);}
+.chipRed{background-image: url(../img/chip/SpriteRed.svg);}
+.chipPink{background-image: url(../img/chip/SpritePink.svg);}
+
+/* контур */
+.shadowButton{box-shadow: #888 0px 0px 4px 5px;}
+.redColor{color: #ff0000;}
+.greenColor{color: #008000;}
+.whiteColor{color: #ffffff;}
+.w{align-self: flex-start;}
+
+/* отступы для кнопок */
+.b-w1{width: 100px;}
+.b-w2{width: 150px;}
+.b-w3{width: 175px;}
+
+/* скрыть элемент */
+.none{display: none;}
+.hiden{visibility: hidden;}
+button:disabled{
+    color: var(--color-textButton-disabled);
+}
+
+.activeTable{
+    background-color: #3B9001;
+}
+
+/* отступы */
+.h1-t{top: calc(var(--top-start) + var(--size-block-half));}
+.h2-t{top: calc(var(--top-start) + var(--height-block) + var(--size-block-half));}
+.h3-t{top: calc(var(--top-start) + var(--height-block) * 2 + var(--size-block-half));}
+
+.v1-t{top: calc(var(--top-start) + var(--height-block) - var(--size-block-half));}
+.v2-t{top: calc(var(--top-start) + var(--height-block) * 2 - var(--size-block-half));}
+
+.h0-l{left: calc(var(--width-block) - var(--size-block-half));}
+.h1-l{left: calc(var(--width-block) * 2 - var(--size-block-half));}
+.h2-l{left: calc(var(--width-block) * 3 - var(--size-block-half));}
+.h3-l{left: calc(var(--width-block) * 4 - var(--size-block-half));}
+.h4-l{left: calc(var(--width-block) * 5 - var(--size-block-half));}
+.h5-l{left: calc(var(--width-block) * 6 - var(--size-block-half));}
+.h6-l{left: calc(var(--width-block) * 7 - var(--size-block-half));}
+.h7-l{left: calc(var(--width-block) * 8 - var(--size-block-half));}
+.h8-l{left: calc(var(--width-block) * 9 - var(--size-block-half));}
+.h9-l{left: calc(var(--width-block) * 10 - var(--size-block-half));}
+.h10-l{left: calc(var(--width-block) * 11 - var(--size-block-half));}
+.h11-l{left: calc(var(--width-block) * 12 - var(--size-block-half));}
+
+.v1-l{left: calc(var(--width-block) + var(--size-block-half));}
+.v2-l{left: calc(var(--width-block) * 2 + var(--size-block-half));}
+.v3-l{left: calc(var(--width-block) * 3 + var(--size-block-half));}
+.v4-l{left: calc(var(--width-block) * 4 + var(--size-block-half));}
+.v5-l{left: calc(var(--width-block) * 5 + var(--size-block-half));}
+.v6-l{left: calc(var(--width-block) * 6 + var(--size-block-half));}
+.v7-l{left: calc(var(--width-block) * 7 + var(--size-block-half));}
+.v8-l{left: calc(var(--width-block) * 8 + var(--size-block-half));}
+.v9-l{left: calc(var(--width-block) * 9 + var(--size-block-half));}
+.v10-l{left: calc(var(--width-block) * 10 + var(--size-block-half));}
+.v11-l{left: calc(var(--width-block) * 11 + var(--size-block-half));}
+.v12-l{left: calc(var(--width-block) * 12 + var(--size-block-half));}
+
+/* при наведении на блок */
+.betweenHorizont_0-3:hover~:is(.block_0, .block_3),
+.betweenHorizont_3-6:hover~:is(.block_3, .block_6),
+.betweenHorizont_6-9:hover~:is(.block_6, .block_9),
+.betweenHorizont_9-12:hover~:is(.block_9, .block_12),
+.betweenHorizont_12-15:hover~:is(.block_12, .block_15),
+.betweenHorizont_15-18:hover~:is(.block_15, .block_18),
+.betweenHorizont_18-21:hover~:is(.block_18, .block_21),
+.betweenHorizont_21-24:hover~:is(.block_21, .block_24),
+.betweenHorizont_24-27:hover~:is(.block_24, .block_27),
+.betweenHorizont_27-30:hover~:is(.block_27, .block_30),
+.betweenHorizont_30-33:hover~:is(.block_30, .block_33),
+.betweenHorizont_33-36:hover~:is(.block_33, .block_36),
+
+.betweenHorizont_0-2:hover~:is(.block_0, .block_2),
+.betweenHorizont_2-5:hover~:is(.block_2, .block_5),
+.betweenHorizont_5-8:hover~:is(.block_5, .block_8),
+.betweenHorizont_8-11:hover~:is(.block_8, .block_11),
+.betweenHorizont_11-14:hover~:is(.block_11, .block_14),
+.betweenHorizont_14-17:hover~:is(.block_14, .block_17),
+.betweenHorizont_17-20:hover~:is(.block_17, .block_20),
+.betweenHorizont_20-23:hover~:is(.block_20, .block_23),
+.betweenHorizont_23-26:hover~:is(.block_23, .block_26),
+.betweenHorizont_26-29:hover~:is(.block_26, .block_29),
+.betweenHorizont_29-32:hover~:is(.block_29, .block_32),
+.betweenHorizont_32-35:hover~:is(.block_32, .block_35),
+
+.betweenHorizont_0-1:hover~:is(.block_0, .block_1),
+.betweenHorizont_1-4:hover~:is(.block_1, .block_4),
+.betweenHorizont_4-7:hover~:is(.block_4, .block_7),
+.betweenHorizont_7-10:hover~:is(.block_7, .block_10),
+.betweenHorizont_10-13:hover~:is(.block_10, .block_13),
+.betweenHorizont_13-16:hover~:is(.block_13, .block_16),
+.betweenHorizont_16-19:hover~:is(.block_16, .block_19),
+.betweenHorizont_19-22:hover~:is(.block_19, .block_22),
+.betweenHorizont_22-25:hover~:is(.block_22, .block_25),
+.betweenHorizont_25-28:hover~:is(.block_25, .block_28),
+.betweenHorizont_28-31:hover~:is(.block_28, .block_31),
+.betweenHorizont_31-34:hover~:is(.block_31, .block_34),
+
+.betweenVertical_3-2:hover~:is(.block_3, .block_2),
+.betweenVertical_6-5:hover~:is(.block_6, .block_5),
+.betweenVertical_9-8:hover~:is(.block_9, .block_8),
+.betweenVertical_12-11:hover~:is(.block_12, .block_11),
+.betweenVertical_15-14:hover~:is(.block_15, .block_14),
+.betweenVertical_18-17:hover~:is(.block_18, .block_17),
+.betweenVertical_21-20:hover~:is(.block_21, .block_20),
+.betweenVertical_24-23:hover~:is(.block_24, .block_23),
+.betweenVertical_27-26:hover~:is(.block_27, .block_26),
+.betweenVertical_30-29:hover~:is(.block_30, .block_29),
+.betweenVertical_33-32:hover~:is(.block_33, .block_32),
+.betweenVertical_36-35:hover~:is(.block_36, .block_35),
+
+.betweenVertical_2-1:hover~:is(.block_2, .block_1),
+.betweenVertical_5-4:hover~:is(.block_5, .block_4),
+.betweenVertical_8-7:hover~:is(.block_8, .block_7),
+.betweenVertical_11-10:hover~:is(.block_11, .block_10),
+.betweenVertical_14-13:hover~:is(.block_14, .block_13),
+.betweenVertical_17-16:hover~:is(.block_17, .block_16),
+.betweenVertical_20-19:hover~:is(.block_20, .block_19),
+.betweenVertical_23-22:hover~:is(.block_23, .block_22),
+.betweenVertical_26-25:hover~:is(.block_26, .block_25),
+.betweenVertical_29-28:hover~:is(.block_29, .block_28),
+.betweenVertical_32-31:hover~:is(.block_32, .block_31),
+.betweenVertical_35-34:hover~:is(.block_35, .block_34),
+
+.square_0-3-2:hover~:is(.block_0, .block_3, .block_2),
+.square_3-6-2-5:hover~:is(.block_3, .block_6, .block_2, .block_5),
+.square_6-9-5-8:hover~:is(.block_6, .block_9, .block_5, .block_8),
+.square_9-12-8-11:hover~:is(.block_9, .block_12, .block_8, .block_11),
+.square_12-15-11-14:hover~:is(.block_12, .block_15, .block_11, .block_14),
+.square_15-18-14-17:hover~:is(.block_15, .block_18, .block_14, .block_17),
+.square_18-21-17-20:hover~:is(.block_18, .block_21, .block_17, .block_20),
+.square_21-24-20-23:hover~:is(.block_21, .block_24, .block_20, .block_23),
+.square_24-27-23-26:hover~:is(.block_24, .block_27, .block_23, .block_26),
+.square_27-30-26-29:hover~:is(.block_27, .block_30, .block_26, .block_29),
+.square_30-33-29-32:hover~:is(.block_30, .block_33, .block_29, .block_32),
+.square_33-36-32-35:hover~:is(.block_33, .block_36, .block_32, .block_35),
+
+.square_0-2-1:hover~:is(.block_0, .block_2, .block_1),
+.square_2-5-1-4:hover~:is(.block_2, .block_5, .block_1, .block_4),
+.square_5-8-4-7:hover~:is(.block_5, .block_8, .block_4, .block_7),
+.square_8-11-7-10:hover~:is(.block_8, .block_11, .block_7, .block_10),
+.square_11-14-10-13:hover~:is(.block_11, .block_14, .block_10, .block_13),
+.square_14-17-13-16:hover~:is(.block_14, .block_17, .block_13, .block_16),
+.square_17-20-16-19:hover~:is(.block_17, .block_20, .block_16, .block_19),
+.square_20-23-19-22:hover~:is(.block_20, .block_23, .block_19, .block_22),
+.square_23-26-22-25:hover~:is(.block_23, .block_26, .block_22, .block_25),
+.square_26-29-25-28:hover~:is(.block_26, .block_29, .block_25, .block_28),
+.square_29-32-28-31:hover~:is(.block_29, .block_32, .block_28, .block_31),
+.square_32-35-31-34:hover~:is(.block_32, .block_35, .block_31, .block_34),
+
+.map__block_row1:hover,
+.map__block_row2:hover,
+.block_0:hover,
+.map__block:hover:not(.block_empty, .block_numberTable, .block_0)
+{ background-color: var(--color-hover);}

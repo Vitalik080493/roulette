@@ -1,0 +1,498 @@
+:root {
+    --diameter: 45px;
+
+    --color-green1: #296800;
+
+    --color-green2: #3B9001;
+
+    --color-green3: #235800;
+
+    --color-green4: #69A631;
+
+    --color-green5: #122E05;
+
+    --color-textButton: #9F9665;
+
+    --color-textButton-disabled: #383523;
+
+    --color-green6: #15270D;
+
+    --color-text: #C5A327;
+
+    --border-test: 1px black solid;
+    --size-block: 10px;
+    --width-block: 45.2px;
+    --height-block: 81px;
+    --size-block-half: calc(var(--size-block) / 2);
+    --color-hover: rgb(194, 216, 0, 50%);
+    --top-start: calc(var(--height-block) * 0.6 * 2)
+}
+
+main{
+    width: 1152px;
+    height: 518px;
+    background-image: url(../img/fone.svg);
+    /* background-color: var(--color-green6); */
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+}
+
+.gameField{
+    margin-top: 22px;
+    margin-left: 25px;
+    position: relative;
+    /* border: 1px black solid; */
+    min-width: 780px;
+    height: 467px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 5px;
+    box-sizing: border-box;
+    /* background-color: var(--color-green1); */
+}
+
+.nameTable{
+    position: absolute;
+    top: 65px;
+    left: 700px;
+    font-size: 20px;
+    transform: rotate(-90deg);
+    width: 100px;
+}
+
+/* Таймер и метка */
+.timerAndLabel{
+    position: absolute;
+    top: 358px;
+    left: 46px;
+    display: flex;
+    align-items: center;
+}
+.timerAndLabel .timer{
+    width: 36px;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.timerAndLabel .timer p{
+    display: block;
+}
+
+/* Сообщение */
+.alertMessage{
+    position: absolute;
+    margin: 0px auto;
+    margin-top: 190px;
+    width: 350px;
+    height: max-content;
+    border: 2px solid var(--color-text);
+    border-radius: 10px;
+    background-color: black;
+    z-index: 999;
+    padding: 15px;
+    color: var(--color-text);
+    text-align: center;
+}
+
+/* Сообщение результата */
+.alertResult{
+    position: absolute;
+    background-image: url(../img/result.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 80px;
+    height: 49px;
+    z-index: 998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alertResultGame{
+    left: 353px;
+    top: 67px;
+}
+.alertResultPlayer{
+    left: 35px;
+    top: 160px;
+}
+
+/* blackjack */
+.blackjack{
+    position: absolute;
+    bottom: 100px;
+    left: 9px;
+    background-image: url(../img/blackjack.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 130px;
+    height: 48px;
+    z-index: 997;
+}
+
+/* Поле игрока */
+.fieldUser{
+    position: relative;
+    width: 150px;
+    height: 333px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.map{
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(var(--width-block) * 14);
+    position: absolute;
+    top: 41.5px;
+    left: 140px;
+}
+
+.map__block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--width-block);
+    height: var(--height-block);
+    /* background-color: rgb(0, 133, 0); */
+    /* border: 1px solid rgb(0, 255, 0); */
+    /* border-right: 0px; */
+    box-sizing: border-box;
+}
+/* блоки первой строки */
+.map__block_row1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--width-block) * 4);
+    height: calc(var(--height-block) * 0.59);
+    /* background-color: rgb(0, 133, 0); */
+    /* border: 1px solid rgb(0, 255, 0); */
+    /* border-right: 0px; */
+    box-sizing: border-box;
+}
+/* блоки второй строки */
+.map__block_row2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--width-block) * 2);
+    height: calc(var(--height-block) * 0.59);
+    /* background-color: rgb(0, 133, 0); */
+    /* border: 1px solid rgb(0, 255, 0); */
+    /* border-right: 0px; */
+    box-sizing: border-box;
+}
+
+.block_empty,
+.block_numberTable{height: calc(var(--height-block) * 0.59);}
+
+
+
+.horizont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--size-block);
+    height: calc(var(--height-block) - var(--size-block));
+    position: absolute;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+}
+
+.vertical{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--width-block) - var(--size-block));
+    height: var(--size-block);
+    position: absolute;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+}
+
+.square{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--size-block);
+    height: var(--size-block);
+    position: absolute;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+}
+
+
+
+.block_chip{
+    color: black;
+    font-size: 10px;
+    min-width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+/* Кнопки */
+.buttons{
+    display: flex;
+    position: absolute;
+    left: 11px;
+    bottom: 9px;
+    width: 760px;
+    justify-content: space-between;
+}
+.button{
+    border: 2px var(--color-textButton) solid;
+    border-radius: 5px;
+    background-color: var(--color-green5);
+    color: var(--color-textButton);
+    filter: drop-shadow(5px 6px 4px rgba(0,0,0,0,5));
+    font-size: 18px;
+    box-sizing: border-box;
+}
+button:hover:enabled{
+    color: white;
+    border-color: white;
+}
+
+/* Поле ставок */
+.bettingField{
+    
+    margin-top: 22px;
+    margin-left: 20px;
+    margin-right: 30px;
+    /* border: var(--border-test); */
+    background-image: url(../img/frame.svg);
+    background-repeat: no-repeat;
+    background-position: 0px 53px;
+    width: 323px;
+    height: 465px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Кнопки меню */
+.buttonMenu{
+    height: 67px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    box-sizing: border-box;
+}
+.buttonMenu li{
+    width: 50px;
+    height: 50px;
+}
+.menuResults{
+    background-image: url(../img/menu/menuResults.svg);
+}
+.menuSettings{
+    background-image: url(../img/menu/menuSettings.svg);
+}
+.menuStatistics{
+    background-image: url(../img/menu/menuStatistics.svg);
+}
+
+/* Список ставок */
+.textareaBetting{
+    /* border: var(--border-test); */
+    height: 225px;
+    width: 270px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#contanerTextarea{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+textarea{
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    height: 180px;
+    width: 257px;
+    padding-left: 10px;
+    background-color: transparent;
+    color: var(--color-text);
+    border: none;
+    outline: none;
+    resize: none;
+    overflow-y: scroll;
+    z-index: 1;
+}
+.backgroundScroll{
+    position: absolute;
+    box-sizing: border-box;
+    top: 27px;
+    right: 14px;
+    height: 75%;
+    width: 6px;
+    background-color: black;
+    z-index: 0;
+    border: 1px solid #9F9665;
+}
+textarea::-webkit-scrollbar{
+    width: 30px;
+}
+textarea::-webkit-scrollbar-thumb {
+    height: 30px;
+    background-image: url(../img/cursor.svg);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+/* отступ для скрола под кнопки */
+/* textarea::-webkit-scrollbar-track {
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
+
+/* настройка звуков */
+.soundSettings{
+    height: 78%;
+    width: 80%;
+}
+
+/* ползунок звуков */
+.settingsSound {
+    appearance: none;
+    width: 222px;
+    height: 24px;
+    outline: none; 
+    margin: 5px 0px;
+    background-color: transparent;
+    background-image: url(../img/range.svg);
+    background-repeat: no-repeat;
+}
+/* .settingsSound::-webkit-slider-runnable-track{
+    width: 222px;
+    height: 24px;
+    
+} */
+.settingsSound::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/cursor.svg);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+/* input[type="range"]::-moz-range-thumb {
+    background-color: green;
+} */
+label{
+    color: var(--color-text);
+    margin-left: 5px;
+}
+
+/* выключить звуки */
+.buttonMuteSound{
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.muteSound{
+    position: relative;
+    top: 2px;
+    margin-left: 10px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/checkNo.svg);
+}
+.muteSound:checked{
+    background-image: url(../img/checkYes.svg);
+}
+
+/* статистика */
+.statistick{
+    color: var(--color-text);
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+}
+.statistick>div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.statistick div div{
+    margin-bottom: 4px;
+}
+.statistick div div p{
+    display: inline;
+}
+
+/* Поле результатов */
+.resultsBetting{
+    /* border: var(--border-test); */
+    height: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 215px;
+    padding-top: 5px;
+    
+}
+
+.bids, .balans{
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    align-content: center;
+}
+
+.resultsBetting p{
+    display: block;
+    color: var(--color-text);
+}
+
+/* Монеты */
+.chipsRadio{
+    width: 100%;
+    height: 111px;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-top: 5px; 
+}
+
+.collChip{
+    width: 57px;
+    display: flex;
+    align-items: end;
+}
+
+.chip{
+    position: relative;
+    right: 3px;
+    color: black;
+    font-size: 20px;
+    min-width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}

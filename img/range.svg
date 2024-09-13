@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 139.00931 15">
+  <defs>
+    <radialGradient id="_Безымянный_градиент_2" data-name="Безымянный градиент 2" cx="-35.24447" cy="112.51049" fx="-6.07094" fy="112.51049" r="47.83669" gradientTransform="translate(88.68633 160.59558) rotate(-4.52616) scale(1 -1.39083) skewX(-.76542)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e0da85"/>
+      <stop offset="1" stop-color="#827a40"/>
+    </radialGradient>
+  </defs>
+  <g id="Shapes_Shape_277_0_Layer1_0_FILL" data-name="Shapes Shape 277 0 Layer1 0 FILL">
+    <path d="m139.00455,1.3c.06667-.86667-.58333-1.3-1.95-1.3H2.00455C.60455,0-.06212.43333.00455,1.3v12.35c-.06667.86667.6,1.31667,2,1.35h135.10001c1.33333-.03333,1.96666-.48333,1.89999-1.35V1.3m-1.95-.4c.56665,0,.88333.13333.95.4v12.35c-.06667.23333-.38335.36667-.95.4H2.00455c-.6-.03333-.93333-.16667-1-.4V1.3c.06667-.26667.4-.4,1-.4h135.05Z" style="fill: url(#_Безымянный_градиент_2);"/>
+    <path d="m138.00455,1.3c-.06667-.26667-.38335-.4-.95-.4H2.00455c-.6,0-.93333.13333-1,.4v12.35c.06667.23333.4.36667,1,.4h135.05c.56665-.03333.88333-.16667.95-.4V1.3Z" style="fill: #020301;"/>
+  </g>
+  <g id="Shapes_Shape_277_0_Layer0_0_FILL" data-name="Shapes Shape 277 0 Layer0 0 FILL">
+    <path d="m135.55455,8.7v-2.55H3.00455l-.5.1v2.35l.5.1h132.55Z" style="fill: #302820;"/>
+  </g>
+</svg>
